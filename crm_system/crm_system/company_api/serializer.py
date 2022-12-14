@@ -10,3 +10,11 @@ class CompanySerializer(serializers.Serializer):
 
     def create(self, data):
         return Company.objects.create(**data)
+
+    def update(self, instance, data):
+        instance.name = data.get('name', instance.name)
+        instance.description = data.get('description', instance.description)
+
+        instance.save()
+
+        return instance
