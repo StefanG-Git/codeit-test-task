@@ -1,11 +1,12 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from crm_system.company_api.models import Company
+from crm_system.company_api.serializer import CompanySerializer
 
 
-def companies_list(request):
+@api_view(["GET"])
+def company_list(request):
     companies = Company.objects.all()
-    companies_python = list(companies.values())
-    return JsonResponse({
-        'companies': companies_python
-    })
+    serializer = CompanySerializer(companies, many=True)
+    return Response(serializer.data)
