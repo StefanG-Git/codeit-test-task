@@ -4,7 +4,7 @@ from crm_system.company_api.models import Company
 
 
 class CompanySerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+    id = serializers.IntegerField(read_only=True)
     name = serializers.CharField()
     description = serializers.CharField()
 
