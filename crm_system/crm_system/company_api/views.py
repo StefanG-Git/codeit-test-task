@@ -20,3 +20,20 @@ def company_create(request):
         return Response(serializer.data)
 
     return Response(serializer.errors)
+
+
+@api_view(["GET", "PUT", "DELETE"])
+def company(request, pk):
+    current_company = Company.objects.get(pk=pk)
+    if request.method == "GET":
+        serializer = CompanySerializer(current_company)
+        return Response(serializer.data)
+
+    if request.method == "PUT":
+        serializer = CompanySerializer(current_company, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors)
+
