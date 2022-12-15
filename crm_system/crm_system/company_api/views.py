@@ -5,14 +5,14 @@ from crm_system.company_api.models import Company
 from crm_system.company_api.serializer import CompanySerializer
 
 
-@api_view(["GET"])
+@api_view(['GET'])
 def company_list(request):
     companies = Company.objects.all()
     serializer = CompanySerializer(companies, many=True)
     return Response(serializer.data)
 
 
-@api_view(["POST"])
+@api_view(['POST'])
 def company_create(request):
     serializer = CompanySerializer(data=request.data)
     if serializer.is_valid():
@@ -22,14 +22,14 @@ def company_create(request):
     return Response(serializer.errors)
 
 
-@api_view(["GET", "PUT", "DELETE"])
+@api_view(['GET', 'PUT', 'DELETE'])
 def company(request, pk):
     current_company = Company.objects.get(pk=pk)
-    if request.method == "GET":
+    if request.method == 'GET':
         serializer = CompanySerializer(current_company)
         return Response(serializer.data)
 
-    if request.method == "PUT":
+    if request.method == 'PUT':
         serializer = CompanySerializer(current_company, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -37,3 +37,8 @@ def company(request, pk):
 
         return Response(serializer.errors)
 
+    if request.method == 'DELETE':
+        current_company.delete()
+        return Response({
+            'delete': True
+        })
