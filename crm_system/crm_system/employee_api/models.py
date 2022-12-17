@@ -16,6 +16,7 @@ class Employee(models.Model):
 
     PHOTO_UPLOAD_FOLDER = 'employee_photos/'
 
+    SALARY_MAX_DIGITS = 8
     SALARY_DECIMAL_PLACES = 2
 
     first_name = models.CharField(
@@ -33,7 +34,9 @@ class Employee(models.Model):
     )
 
     date_of_birth = models.DateField()
+
     photo = models.ImageField(upload_to=PHOTO_UPLOAD_FOLDER)
+
     position = models.CharField(
         max_length=POSITION_MAX_LENGTH,
         validators=(
@@ -42,7 +45,7 @@ class Employee(models.Model):
     )
 
     salary = models.DecimalField(
-        max_digits=6,
+        max_digits=SALARY_MAX_DIGITS,
         decimal_places=SALARY_DECIMAL_PLACES,
     )
 
