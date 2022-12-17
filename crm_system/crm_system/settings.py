@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_cleanup',
 
     'crm_system.company_api',
+    'crm_system.employee_api',
 ]
 
 MIDDLEWARE = [
