@@ -14,7 +14,7 @@ def string_contains_only_letters(string: str) -> bool:
 
 def calculate_years_between_dates(start_date: datetime.date, end_date: datetime.date) -> int:
     """
-    Calculates years between two dates.
+    Calculates years difference between two dates.
 
     :return: int
     """
