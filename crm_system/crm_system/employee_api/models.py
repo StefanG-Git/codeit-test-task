@@ -16,7 +16,7 @@ class Employee(models.Model):
 
     PHOTO_UPLOAD_FOLDER = 'employee_photos/'
 
-    SALARY_MAX_DIGITS = 8
+    SALARY_MAX_DIGITS = 7
     SALARY_DECIMAL_PLACES = 2
 
     first_name = models.CharField(
