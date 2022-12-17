@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from crm_system.employee_api.models import Employee
+
+admin.site.register(Employee)
