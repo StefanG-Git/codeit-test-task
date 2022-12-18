@@ -5,7 +5,7 @@ from crm_system.company_api.models import Company
 
 
 class CompanySerializer(serializers.ModelSerializer):
-    LOGO_MAX_SIZE_IN_MB = 3
+    LOGO_MAX_SIZE_IN_MB = 1
 
     class Meta:
         model = Company
