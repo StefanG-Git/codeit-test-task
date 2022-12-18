@@ -23,7 +23,7 @@ def calculate_years_between_dates(start_date: datetime.date, end_date: datetime.
 
 def image_size_is_valid(image: InMemoryUploadedFile, max_size_in_mb: int) -> bool:
     """
-    Validates if the size of the image is not more than the max allowed size.
+    Validates if the size of the image is not more than the allowed size.
 
     :return: bool
     """
