@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core.files.uploadedfile import InMemoryUploadedFile, SimpleUploadedFile
 
 
 def string_contains_only_letters(string: str) -> bool:
@@ -29,6 +29,15 @@ def image_size_is_valid(image: InMemoryUploadedFile, max_size_in_mb: int) -> boo
     :return: bool
     """
     return image.size <= (max_size_in_mb * 1024 * 1024)
+
+
+def create_image(name: str, path: str):
+    """
+    Creates a simple representation of a file, which just has content and a name.
+
+    :return: SimpleUploadedFile
+    """
+    return SimpleUploadedFile(name=name, content=open(path, 'rb').read())
 
 
 def delete_file(path: str) -> None:
