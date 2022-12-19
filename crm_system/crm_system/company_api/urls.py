@@ -4,5 +4,5 @@ from crm_system.company_api.views import CompanyListAPIView, CompanyDetailAPIVie
 
 urlpatterns = [
     path('', CompanyListAPIView.as_view(), name='company list'),
-    path('<int:pk>/', CompanyDetailAPIView.as_view(), name='company action'),
+    path('<int:pk>/', CompanyDetailAPIView.as_view(), name='company details'),
 ]
