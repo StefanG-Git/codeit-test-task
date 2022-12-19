@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -28,3 +29,14 @@ def image_size_is_valid(image: InMemoryUploadedFile, max_size_in_mb: int) -> boo
     :return: bool
     """
     return image.size <= (max_size_in_mb * 1024 * 1024)
+
+
+def delete_file(path: str) -> None:
+    """
+    Deletes file by given path if exists.
+
+    :return: None
+    """
+
+    if os.path.exists(path):
+        os.remove(path)
