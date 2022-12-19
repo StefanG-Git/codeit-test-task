@@ -10,7 +10,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
     EMPLOYEE_MIN_YEARS = 18
     EMPLOYEE_MAX_YEARS = 65
 
-    PHOTO_MAX_SIZE_IN_MB = 3
+    PHOTO_MAX_SIZE_IN_MB = 1
 
     SALARY_MIN_VALUE = 500
 
