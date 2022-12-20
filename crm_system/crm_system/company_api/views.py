@@ -13,7 +13,7 @@ class CompanyListAPIView(APIView):
         data = Company.objects.all()
         # Serialize the data of all companies if any
         serializer = CompanySerializer(data, many=True)
-        # Return all companies as list of jsons if any else empty list
+        # Return all companies as list of jsons if any else empty list and corresponding status code
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -23,9 +23,9 @@ class CompanyListAPIView(APIView):
         if serializer.is_valid():
             # Create new company and save it in the db
             serializer.save()
-            # Return the new company as json
+            # Return the new company as json and corresponding status code
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # Return the corresponding error message
+        # Return the corresponding error message and status code
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -35,7 +35,7 @@ class CompanyDetailAPIView(APIView):
             # Return company with the provided pk if exists
             return Company.objects.get(pk=pk)
         except Company.DoesNotExist:
-            # Return the corresponding error message
+            # Return the corresponding error message and status code
             raise Http404
 
     def get(self, request, pk):
@@ -43,7 +43,7 @@ class CompanyDetailAPIView(APIView):
         company = self.get_company_by_pk(pk)
         # Serialize the data of the company
         serializer = CompanySerializer(company)
-        # Return the company as json
+        # Return the company as json and corresponding status code
         return Response(serializer.data)
 
     def put(self, request, pk):
@@ -55,9 +55,9 @@ class CompanyDetailAPIView(APIView):
         if serializer.is_valid():
             # Update the data of the company in the db
             serializer.save()
-            # Return the updated company as json
+            # Return the updated company as json and corresponding status code
             return Response(serializer.data, status=status.HTTP_200_OK)
-        # Return the corresponding error message
+        # Return the corresponding error message and status code
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
@@ -65,5 +65,5 @@ class CompanyDetailAPIView(APIView):
         company_to_delete = self.get_company_by_pk(pk)
         # Delete the company from the db
         company_to_delete.delete()
-        # Return the corresponding info message
+        # Return the corresponding status code
         return Response(status=status.HTTP_204_NO_CONTENT)
