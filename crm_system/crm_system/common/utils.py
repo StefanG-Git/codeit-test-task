@@ -33,7 +33,7 @@ def image_size_is_valid(image: InMemoryUploadedFile, max_size_in_mb: int) -> boo
 
 def create_image(name: str, path: str):
     """
-    Creates a simple representation of a file, which just has content and a name.
+    Creates a simple representation of a file, which has content and a name.
 
     :return: SimpleUploadedFile
     """
