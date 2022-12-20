@@ -12,6 +12,7 @@ class CompanySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate_logo(self, image):
+        # Validate logo size in MB
         if not image_size_is_valid(image, self.LOGO_MAX_SIZE_IN_MB):
             raise serializers.ValidationError(f'Max file size is {self.LOGO_MAX_SIZE_IN_MB}MB')
 
