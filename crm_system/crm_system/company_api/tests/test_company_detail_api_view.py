@@ -133,7 +133,7 @@ class TestCompanyDetailAPIView(CompanyAPIViewTestCase):
     def test_put__when_pk_exists_and_update_only_logo_with_not_a_file_value__expect_bad_request(self):
         # Create company before put request
         res = self.client.post(self.COMPANY_LIST_URL_NAME, data=self.valid_test_data)
-        # Change logo value with string
+        # Change logo value with invalid path
         response = self.client.put(
             reverse(self.COMPANY_DETAIL_URL_NAME, kwargs={'pk': res.json()['id']}),
             data={self.LOGO_FIELD: self.NAME_FIELD}
