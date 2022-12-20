@@ -52,6 +52,24 @@ class EmployeeAPIViewTestCase(APITestCase):
     TEST_LOGO_NAME = 'test_logo.png'
     TEST_LOGO_TO_DELETE_PATH = 'media/company_logos/' + TEST_LOGO_NAME
 
+    BLANK_FIELD_MESSAGE = ['This field may not be blank.']
+    MIN_2_CHARS_MESSAGE = ['Ensure this field has at least 2 characters.']
+    MIN_3_CHARS_MESSAGE = ['Ensure this field has at least 3 characters.']
+    MAX_30_CHARS_MESSAGE = ['Ensure this field has no more than 30 characters.']
+    MAX_50_CHARS_MESSAGE = ['Ensure this field has no more than 50 characters.']
+    LAST_NAME_ONLY_LETTERS_MESSAGE = ['Last name must contains only letters']
+    FIRST_NAME_ONLY_LETTERS_MESSAGE = ['First name must contains only letters']
+    INVALID_DATE_MESSAGE = ['Invalid date']
+    DATE_INVALID_FORMAT_MESSAGE = ['Date has wrong format. Use one of these formats instead: YYYY-MM-DD.']
+    UNDER_18_YEARS_MESSAGE = ['People under age of 18 cannot work']
+    ABOVE_65_YEARS_MESSAGE = ['People older than 65 cannot work']
+    MAX_1_MB_MESSAGE = ['Max file size is 1MB']
+    INVALID_FILE_FORMAT_MESSAGE = ['The submitted data was not a file. Check the encoding type on the form.']
+    MIN_WAGE_MESSAGE = ['The minimum wage is 500 USD']
+    MAX_7_DIGITS_MESSAGE = ['Ensure that there are no more than 7 digits in total.']
+    INVALID_NUMBER_MESSAGE = ['A valid number is required.']
+    INVALID_COMPANY_PK_MESSAGE = ['Invalid pk "5" - object does not exist.']
+
     def setUp(self):
         # Create company before each test
         logo = create_image(self.TEST_LOGO_NAME, self.VALID_COMPANY_SIZE_LOGO_PATH)
