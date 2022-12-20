@@ -53,14 +53,14 @@ class EmployeeAPIViewTestCase(APITestCase):
     TEST_LOGO_TO_DELETE_PATH = 'media/company_logos/' + TEST_LOGO_NAME
 
     def setUp(self):
-        # Create data with valid values for each test
+        # Create company before each test
         logo = create_image(self.TEST_LOGO_NAME, self.VALID_COMPANY_SIZE_LOGO_PATH)
         self.company = Company.objects.create(**{
             self.COMPANY_NAME_FIELD: self.VALID_COMPANY_NAME,
             self.COMPANY_LOGO_FIELD: logo,
             self.COMPANY_DESCRIPTION_FIELD: self.VALID_COMPANY_DESCRIPTION,
         })
-
+        # Create data with valid values for each test
         photo = create_image(self.TEST_PHOTO_NAME, self.VALID_SIZE_PHOTO_PATH)
         self.valid_test_data = {
             self.FIRST_NAME_FIELD: self.VALID_FIRST_NAME,
