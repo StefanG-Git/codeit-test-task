@@ -203,7 +203,7 @@ class TestEmployeeListAPIView(EmployeeAPIViewTestCase):
         self.assertListEqual(expected_info_messages, response.json()[self.LAST_NAME_FIELD])
         self.assertEqual(status.HTTP_400_BAD_REQUEST, response.status_code)
 
-    def test_post__when_name_contains_symbols__expect_bad_request(self):
+    def test_post__when_last_name_contains_symbols__expect_bad_request(self):
         expected_info_messages = ['Last name must contains only letters']
 
         self.valid_test_data[self.LAST_NAME_FIELD] += '@%'
@@ -294,7 +294,7 @@ class TestEmployeeListAPIView(EmployeeAPIViewTestCase):
         self.assertListEqual(expected_info_messages, response.json()[self.POSITION_FIELD])
         self.assertEqual(status.HTTP_400_BAD_REQUEST, response.status_code)
 
-    def test_post__when_salary_is_negative__expect_bad_request(self):
+    def test_post__when_salary_is_negative_number__expect_bad_request(self):
         expected_info_messages = ['The minimum wage is 500 USD']
 
         self.valid_test_data[self.SALARY_FIELD] = -5
@@ -303,7 +303,7 @@ class TestEmployeeListAPIView(EmployeeAPIViewTestCase):
         self.assertListEqual(expected_info_messages, response.json()[self.SALARY_FIELD])
         self.assertEqual(status.HTTP_400_BAD_REQUEST, response.status_code)
 
-    def test_post__when_salary_is_under_min_wave__expect_bad_request(self):
+    def test_post__when_salary_is_less_than_min_wage__expect_bad_request(self):
         expected_info_messages = ['The minimum wage is 500 USD']
 
         self.valid_test_data[self.SALARY_FIELD] = self.TOO_LOW_SALARY
