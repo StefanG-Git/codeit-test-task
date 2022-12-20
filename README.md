@@ -2,7 +2,7 @@
 
 Implementation of the task from CodeIT.
 
-Simple CRM system for companies app created using Django Rest Framework and postgresql db.
+Simple CRM system for companies app created using Django Rest Framework.
 
  - CRUD API to manage companies
 
