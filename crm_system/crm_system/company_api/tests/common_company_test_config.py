@@ -25,6 +25,12 @@ class CompanyAPIViewTestCase(APITestCase):
     TEST_LOGO_NAME = 'test_logo.png'
     TEST_LOGO_TO_DELETE_PATH = 'media/company_logos/' + TEST_LOGO_NAME
 
+    BLANK_FIELD_MESSAGE = ['This field may not be blank.']
+    MAX_30_CHARS_MESSAGE = ['Ensure this field has no more than 30 characters.']
+    MAX_300_CHARS_MESSAGE = ['Ensure this field has no more than 300 characters.']
+    MAX_1_MB_MESSAGE = ['Max file size is 1MB']
+    INVALID_FILE_FORMAT_MESSAGE = ['The submitted data was not a file. Check the encoding type on the form.']
+
     def setUp(self):
         # Create data with valid values for each test
         logo = create_image(self.TEST_LOGO_NAME, self.VALID_SIZE_LOGO_PATH)
